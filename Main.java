@@ -21,6 +21,7 @@ public class Main {
             System.out.println("\n===== Student Management System =====");
             System.out.println("1. Add Student");
             System.out.println("2. Show All Students");
+            System.out.println("3. Search Student");
             System.out.println("0. Exit");
 
             System.out.print("Enter your choice: ");
@@ -36,6 +37,10 @@ public class Main {
 
                 case 2:
                     showAllStudents();
+                    break;
+
+                case 3:
+                    searchStudent();
                     break;
 
                 case 0:
@@ -56,6 +61,11 @@ public class Main {
 
         System.out.print("Enter national ID: ");
         String id = input.nextLine();
+
+        if (findStudent(id) != null) {
+            System.out.println("Student ID already exists.");
+            return;
+        }
 
         System.out.print("Enter name: ");
         String name = input.nextLine();
@@ -92,5 +102,32 @@ public class Main {
             System.out.println("--------------------");
         }
     }
-}
 
+    // Search Student
+    public static void searchStudent() {
+
+        System.out.print("Enter national ID: ");
+        String id = input.nextLine();
+
+        Student student = findStudent(id);
+
+        if (student == null) {
+            System.out.println("Student not found.");
+        } else {
+            student.displayInfo();
+        }
+    }
+
+    // Find Student by ID
+    public static Student findStudent(String id) {
+
+        for (Student student : students) {
+
+            if (student.getNationalId().equals(id)) {
+                return student;
+            }
+        }
+
+        return null;
+    }
+}
