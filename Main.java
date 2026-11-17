@@ -1,4 +1,4 @@
- 
+  
 package Main;
 
 import java.util.ArrayList;
@@ -23,6 +23,7 @@ public class Main {
             System.out.println("2. Show All Students");
             System.out.println("3. Search Student");
             System.out.println("4. Update Student");
+            System.out.println("5. Delete Student");
             System.out.println("0. Exit");
 
             System.out.print("Enter your choice: ");
@@ -46,6 +47,10 @@ public class Main {
 
                 case 4:
                     updateStudent();
+                    break;
+
+                case 5:
+                    deleteStudent();
                     break;
 
                 case 0:
@@ -156,6 +161,22 @@ public class Main {
         student.setGrade(grade);
 
         System.out.println("Student updated successfully.");
+    }
+
+    // Delete Student
+    public static void deleteStudent() {
+
+        System.out.print("Enter national ID: ");
+        String id = input.nextLine();
+
+        Student student = findStudent(id);
+
+        if (student == null) {
+            System.out.println("Student not found.");
+        } else {
+            students.remove(student);
+            System.out.println("Student deleted successfully.");
+        }
     }
 
     // Find Student by ID
