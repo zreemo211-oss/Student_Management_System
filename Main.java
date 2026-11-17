@@ -22,6 +22,7 @@ public class Main {
             System.out.println("1. Add Student");
             System.out.println("2. Show All Students");
             System.out.println("3. Search Student");
+            System.out.println("4. Update Student");
             System.out.println("0. Exit");
 
             System.out.print("Enter your choice: ");
@@ -41,6 +42,10 @@ public class Main {
 
                 case 3:
                     searchStudent();
+                    break;
+
+                case 4:
+                    updateStudent();
                     break;
 
                 case 0:
@@ -116,6 +121,41 @@ public class Main {
         } else {
             student.displayInfo();
         }
+    }
+
+    // Update Student
+    public static void updateStudent() {
+
+        System.out.print("Enter national ID: ");
+        String id = input.nextLine();
+
+        Student student = findStudent(id);
+
+        if (student == null) {
+            System.out.println("Student not found.");
+            return;
+        }
+
+        System.out.print("Enter new name: ");
+        String name = input.nextLine();
+
+        System.out.print("Enter new age: ");
+        int age = input.nextInt();
+
+        System.out.print("Enter new grade: ");
+        double grade = input.nextDouble();
+        input.nextLine();
+
+        if (age <= 0 || grade < 0 || grade > 100) {
+            System.out.println("Invalid age or grade.");
+            return;
+        }
+
+        student.setName(name);
+        student.setAge(age);
+        student.setGrade(grade);
+
+        System.out.println("Student updated successfully.");
     }
 
     // Find Student by ID
