@@ -51,4 +51,35 @@ public class Student {
             return "Fail";
         }
     }
+    
+    
+ // Getters
+    public String getNationalId() {
+        return nationalId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public double getGrade() {
+        return grade;
+    }
+
+    // Setters
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setGrade(double grade) {
+        this.grade = grade;
+    }
 }
